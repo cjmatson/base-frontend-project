@@ -1,4 +1,3 @@
-var Firebase = require("firebase");
 var blocTime = angular.module('BlocTime', ['ui.router', 'firebase']);
 blocTime.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
