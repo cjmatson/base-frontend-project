@@ -1,0 +1,66 @@
+html {
+	height: 100%;
+}
+
+body {
+	background-color: #000080;
+}
+
+.track {
+	text-align: center;
+	font-family: "Impact";
+	color: #FFD700;
+	text-shadow: 2px 2px red;
+	display: block;
+	margin: auto;
+	margin-top: 125px;
+	font-weight: 500;
+	font-size: 100px;
+}
+
+.start-reset {
+	background: red;
+	color: #000080;
+	font-weight: 500;
+	font-size: 50px;
+	font-family: "Impact";
+	text-align: center;
+	border: #000080;
+	margin: auto;
+	display: block;
+	border-style: outset;
+	text-shadow: 2px 2px #ffd700;
+	border-color: #FFD700;
+	cursor: pointer;
+}
+
+.break-resume {
+	background: red;
+	color: #000080;
+	font-weight: 500;
+	font-size: 50px;
+	font-family: "Impact";
+	text-align: center;
+	border: #000080;
+	margin: auto;
+	display: block;
+	border-style: outset;
+	text-shadow: 2px 2px #FFD700;
+	border-color: #FFD700;
+	cursor: pointer;
+}
+
+.navbar {
+	text-align: center;
+	background-color: red;
+	line-height: 60px;
+	color: #000080;
+	font-weight: 500;
+	font-size: 50px;
+	font-family: "Impact";
+	border-style: outset;
+	text-shadow: 2px 2px #FFD700;
+	border-color: #FFD700;
+	letter-spacing: 6px;
+	position: relative;
+}
