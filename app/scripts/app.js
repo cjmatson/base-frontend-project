@@ -22,8 +22,20 @@ blocTime.directive('tracker',['$interval', function($interval) {
 			scope.watch = 1500;
 			scope.buttonText = "Start";
 			scope.breakButton = "Break";
+			scope.onBreak = false;
 			var countdown = function () {
 				scope.watch--;
+				if (scope.watch === 0) {
+					scope.watch = 300;
+					scope.onBreak = true;
+				}
+			}
+			var breakCountdown = function () {
+				scope.watch--;
+				if (scope.watch === 0) {
+					scope.watch = 1500;
+					scope.onBreak = false;
+				}
 			}
 			scope.buttonTextClicked = function () {
 				if (scope.buttonText === "Start") {
@@ -36,11 +48,20 @@ blocTime.directive('tracker',['$interval', function($interval) {
 					scope.watch = 1500;
 				}
 			}
-			
-	 	}
-
+			scope.onBreakClicked = function () {
+				if (scope.breakButton === "Break") {
+					scope.breakButton = "Resume";
+					$interval.cancel(scope.interval);
+					scope.watch = 300;
+				}
+				else {
+					scope.breakButton = "Break";
+					scope.interval = $interval(breakCountdown, 1000);
+					scope.watch = 300;
+				}
+			}
+		}
 	}
-
 }])
 
 blocTime.filter('timecode', function() {
