@@ -18,12 +18,13 @@ blocTime.directive('tracker',['$interval', function($interval) {
 		restrict: 'E',
 		templateUrl: '/templates/directives/tracker.html',
 		scope: true,
-		link: function(scope, element, attribute) {
-			scope.watch = 1500;
+		link: function(scope, element, attributes) {
+			scope.watch = 60;
 			scope.buttonText = "Start";
 			scope.breakButton = "Break";
 			scope.onBreak = false;
-			var countdown = function () {
+			scope.completedWorkSessions = 0;
+			scope.countdown = function () {
 				scope.watch--;
 				if (scope.watch === 0) {
 					scope.watch = 300;
@@ -37,27 +38,53 @@ blocTime.directive('tracker',['$interval', function($interval) {
 					scope.onBreak = false;
 				}
 			}
+			scope.$watch('watch', function(newValue, oldValue) {
+				if (newValue === 0) {
+					if (scope.onBreak) {
+						scope.onBreak = false;
+						scope.watch = 60;
+						scope.buttonText = "Start";
+					} else {
+						scope.onBreak = true;
+						scope.watch = 30;
+						scope.breakButton = "Break";
+						scope.completedWorkSessions++;
+					}
+					if (scope.completedWorkSessions === 4) {
+						if (newValue === 0) {
+							if (scope.onBreak) {
+						scope.watch = 1800;
+						scope.onBreak = true;
+						scope.buttonText = "Resume";
+						scope.completedWorkSessions = 0; }
+						else {
+							scope.onBreak = false;
+							scope.watch = 60;
+							scope.buttonText = "Start";
+							}
+						}
+					}
+					scope.onBreakClicked();
+				}
+			});
 			scope.buttonTextClicked = function () {
 				if (scope.buttonText === "Start") {
 					scope.buttonText = "Reset";
-					scope.interval = $interval(countdown, 1000);
+					scope.interval = $interval(scope.countdown, 1000);
 				}
 				else {
 					scope.buttonText = "Start";
 					$interval.cancel(scope.interval);
-					scope.watch = 1500;
 				}
 			}
 			scope.onBreakClicked = function () {
 				if (scope.breakButton === "Break") {
 					scope.breakButton = "Resume";
 					$interval.cancel(scope.interval);
-					scope.watch = 300;
 				}
 				else {
 					scope.breakButton = "Break";
-					scope.interval = $interval(breakCountdown, 1000);
-					scope.watch = 300;
+					scope.interval = $interval(scope.countdown, 1000);
 				}
 			}
 		}
@@ -82,6 +109,3 @@ blocTime.filter('timecode', function() {
 	}
 	
 })
- 
-		
-
