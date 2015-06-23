@@ -20,35 +20,24 @@ blocTime.directive('tracker',['$interval', function($interval) {
 		templateUrl: '/templates/directives/tracker.html',
 		scope: true,
 		link: function(scope, element, attributes) {
-			scope.watch = 60;
-			scope.buttonText = "Start";
-			scope.breakButton = "Break";
+			scope.watch = 1500;
+			scope.buttonText = "Start Work";
+			scope.breakButton = "Pause Break";
 			scope.onBreak = false;
 			scope.completedWorkSessions = 0;
 			scope.countdown = function () {
 				scope.watch--;
-				if (scope.watch === 0) {
-					scope.watch = 300;
-					scope.onBreak = true;
-				}
-			}
-			var breakCountdown = function () {
-				scope.watch--;
-				if (scope.watch === 0) {
-					scope.watch = 1500;
-					scope.onBreak = false;
-				}
 			}
 			scope.$watch('watch', function(newValue, oldValue) {
 				if (newValue === 0) {
 					if (scope.onBreak) {
 						scope.onBreak = false;
-						scope.watch = 60;
-						scope.buttonText = "Start";
+						scope.watch = 1500;
+						scope.buttonText = "Start Break";
 					} else {
 						scope.onBreak = true;
-						scope.watch = 30;
-						scope.breakButton = "Break";
+						scope.watch = 300;
+						scope.breakButton = "Pause Break";
 						scope.completedWorkSessions++;
 					}
 					if (scope.completedWorkSessions === 4) {
@@ -56,12 +45,12 @@ blocTime.directive('tracker',['$interval', function($interval) {
 							if (scope.onBreak) {
 						scope.watch = 1800;
 						scope.onBreak = true;
-						scope.buttonText = "Resume";
+						scope.buttonText = "Start Break";
 						scope.completedWorkSessions = 0; }
 						else {
 							scope.onBreak = false;
-							scope.watch = 60;
-							scope.buttonText = "Start";
+							scope.watch = 1500;
+							scope.buttonText = "Start Work";
 							}
 						}
 					}
@@ -69,22 +58,22 @@ blocTime.directive('tracker',['$interval', function($interval) {
 				}
 			});
 			scope.buttonTextClicked = function () {
-				if (scope.buttonText === "Start") {
-					scope.buttonText = "Reset";
+				if (scope.buttonText === "Start Work") {
+					scope.buttonText = "Pause Work";
 					scope.interval = $interval(scope.countdown, 1000);
 				}
 				else {
-					scope.buttonText = "Start";
+					scope.buttonText = "Start Work";
 					$interval.cancel(scope.interval);
 				}
 			}
 			scope.onBreakClicked = function () {
-				if (scope.breakButton === "Break") {
-					scope.breakButton = "Resume";
+				if (scope.breakButton === "Pause Break") {
+					scope.breakButton = "Start Break";
 					$interval.cancel(scope.interval);
 				}
 				else {
-					scope.breakButton = "Break";
+					scope.breakButton = "Pause Break";
 					scope.interval = $interval(scope.countdown, 1000);
 				}
 			}

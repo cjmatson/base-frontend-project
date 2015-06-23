@@ -1,5 +1,4 @@
 <h1><time class="track" >{{watch | timecode }}<time></h1>
-
-<button id="countdown" class="start-reset" ng-hide="onBreak" ng-click="buttonTextClicked()">{{buttonText}}</button>
+<button id="countdown" class="start" ng-hide="onBreak" ng-click="buttonTextClicked()">{{buttonText}}</button>
 <br>
-<button id="breakCountdown" class="break-resume" ng-show="onBreak" ng-click="onBreakClicked()">{{breakButton}}</button>
+<button id="breakCountdown" class="break" ng-show="onBreak" ng-click="onBreakClicked()">{{breakButton}}</button>
