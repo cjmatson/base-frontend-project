@@ -15,7 +15,7 @@ body {
   font-weight: 400;
   font-size: 100px; }
 
-.start-reset {
+.start {
   background: red;
   color: #000080;
   font-weight: 400;
@@ -30,7 +30,7 @@ body {
   border-color: #FFD700;
   cursor: pointer; }
 
-.break-resume {
+.break {
   background: red;
   color: #000080;
   font-weight: 500;
