@@ -20,12 +20,12 @@ blocTime.directive('tracker',['$interval', function($interval) {
 		templateUrl: '/templates/directives/tracker.html',
 		scope: true,
 		link: function(scope, element, attributes) {
-			scope.mySound = new buzz.sound('/bloc-time/app/dingdong.mp3', {
+			scope.mySound = new buzz.sound('http://soundjax.com/reddo/4122%5Edingdong.mp3', {
 				preload: true,
 			});
 			scope.volume = 90;
 			scope.playing = false;
-			scope.watch = 60;
+			scope.watch = 1500;
 			scope.buttonText = "Start Work";
 			scope.breakButton = "Pause Break";
 			scope.onBreak = false;
@@ -37,14 +37,14 @@ blocTime.directive('tracker',['$interval', function($interval) {
 				if (newValue === 0) {
 					if (scope.onBreak) {
 						scope.onBreak = false;
-						scope.watch = 60;
-						scope.buttonText = "Start Break";
+						scope.watch = 1500;
+						scope.buttonText = "Start Work";
 						scope.mySound.play();
 						scope.mySound.setVolume(scope.volume);
 						scope.playing = true;
 					} else {
 						scope.onBreak = true;
-						scope.watch = 30;
+						scope.watch = 300;
 						scope.breakButton = "Pause Break";
 						scope.completedWorkSessions++;
 						scope.mySound.play();
@@ -54,7 +54,7 @@ blocTime.directive('tracker',['$interval', function($interval) {
 					if (scope.completedWorkSessions === 4) {
 						if (newValue === 0) {
 							if (scope.onBreak) {
-						scope.watch = 120;
+						scope.watch = 1800;
 						scope.onBreak = true;
 						scope.buttonText = "Start Break";
 						scope.completedWorkSessions = 0;
@@ -64,7 +64,7 @@ blocTime.directive('tracker',['$interval', function($interval) {
 					        }
 						else {
 							scope.onBreak = false;
-							scope.watch = 60;
+							scope.watch = 1500;
 							scope.buttonText = "Start Work";
 							scope.mySound.play();
 							scope.mySound.setVolume(scope.volume);
