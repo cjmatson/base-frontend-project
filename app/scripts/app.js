@@ -19,6 +19,11 @@ blocTime.directive('tracker',['$interval', function($interval) {
 		templateUrl: '/templates/directives/tracker.html',
 		scope: true,
 		link: function(scope, element, attributes) {
+			scope.mySound = new buzz.sound('http://soundjax.com/reddo/4122%5Edingdong.mp3', {
+				preload: true,
+			});
+			scope.volume = 90;
+			scope.playing = false;
 			scope.watch = 1500;
 			scope.buttonText = "Start Work";
 			scope.breakButton = "Pause Break";
@@ -32,12 +37,18 @@ blocTime.directive('tracker',['$interval', function($interval) {
 					if (scope.onBreak) {
 						scope.onBreak = false;
 						scope.watch = 1500;
-						scope.buttonText = "Start Break";
+						scope.buttonText = "Start Work";
+						scope.mySound.play();
+						scope.mySound.setVolume(scope.volume);
+						scope.playing = true;
 					} else {
 						scope.onBreak = true;
 						scope.watch = 300;
 						scope.breakButton = "Pause Break";
 						scope.completedWorkSessions++;
+						scope.mySound.play();
+						scope.mySound.setVolume(scope.volume);
+						scope.playing = true;
 					}
 					if (scope.completedWorkSessions === 4) {
 						if (newValue === 0) {
@@ -45,11 +56,18 @@ blocTime.directive('tracker',['$interval', function($interval) {
 						scope.watch = 1800;
 						scope.onBreak = true;
 						scope.buttonText = "Start Break";
-						scope.completedWorkSessions = 0; }
+						scope.completedWorkSessions = 0;
+						scope.mySound.play();
+						scope.mySound.setVolume(scope.volume);
+						scope.playing = true;
+					        }
 						else {
 							scope.onBreak = false;
 							scope.watch = 1500;
 							scope.buttonText = "Start Work";
+							scope.mySound.play();
+							scope.mySound.setVolume(scope.volume);
+							scope.playing = true;
 							}
 						}
 					}
