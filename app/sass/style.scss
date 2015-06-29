@@ -13,7 +13,7 @@ body {
 	text-shadow: 2px 2px red;
 	display: block;
 	margin: auto;
-	margin-top: 125px;
+	margin-top: 45px;
 	font-weight: 400;
 	font-size: 100px;
 }
@@ -63,4 +63,22 @@ body {
 	border-color: #FFD700;
 	letter-spacing: 6px;
 	position: relative;
+}
+
+#taskButton {
+	cursor: pointer;
+	background: red;
+	color: #000080;
+	font-family: "Impact";
+	text-align: center;
+	border-style: outset;
+	text-shadow: 1px 1px #FFD700;
+	border-color: #FFD700;
+	font-weight: 400;
+}
+
+#taskHeader {
+	font-family: "Impact";
+	color: #FFD700;
+	text-shadow: 1px 1px red;
 }

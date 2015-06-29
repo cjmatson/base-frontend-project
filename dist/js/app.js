@@ -10,8 +10,27 @@ blocTime.config(['$stateProvider', '$locationProvider', function($stateProvider,
 }])
 
 blocTime.controller('Home.controller', ['$scope', '$firebase', function($scope, $firebase) {
-	var ref = new Firebase("https://popping-heat-8018.firebaseio.com");
+	var ref = new Firebase("https://popping-heat-8018.firebaseio.com/");
 	$scope.data = $firebase(ref);
+	var tasks = $scope.data.$asArray();
+	$scope.addTask = function() {
+		if ($scope.taskEntry) {
+			tasks.$add($scope.taskEntry);
+			$scope.taskEntry = "";
+			return {
+				all: tasks
+			}
+		}
+	}
+	$scope.returnTask = function($event) {
+		if ($scope.taskEntry && $event.keyCode === 13) {
+			tasks.$add($scope.taskEntry);
+			$scope.taskEntry = "";
+			return {
+				all: tasks
+			}
+		}
+	}
 }])
 
 blocTime.directive('tracker',['$interval', function($interval) {
@@ -117,4 +136,5 @@ blocTime.filter('timecode', function() {
 	}
 	
 })
+
 },{}]},{},[1]);
