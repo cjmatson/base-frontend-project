@@ -12,22 +12,23 @@ blocTime.config(['$stateProvider', '$locationProvider', function($stateProvider,
 blocTime.controller('Home.controller', ['$scope', '$firebase', function($scope, $firebase) {
 	var ref = new Firebase("https://popping-heat-8018.firebaseio.com/");
 	$scope.data = $firebase(ref);
-	var tasks = $scope.data.$asArray();
+	$scope.tasks = $scope.data.$asArray();
+	$scope.task = {createdAt: Firebase.ServerValue.TIMESTAMP};
 	$scope.addTask = function() {
-		if ($scope.taskEntry) {
-			tasks.$add($scope.taskEntry);
-			$scope.taskEntry = "";
+		if ($scope.task.name) {
+			$scope.tasks.$add($scope.task);
+			$scope.task = {createdAt: Firebase.ServerValue.TIMESTAMP};
 			return {
-				all: tasks
+				all: $scope.tasks
 			}
 		}
 	}
 	$scope.returnTask = function($event) {
-		if ($scope.taskEntry && $event.keyCode === 13) {
-			tasks.$add($scope.taskEntry);
-			$scope.taskEntry = "";
+		if ($scope.task.name && $event.keyCode === 13) {
+			$scope.tasks.$add($scope.task);
+			$scope.task = {createdAt: Firebase.ServerValue.TIMESTAMP};
 			return {
-				all: tasks
+				all: $scope.tasks
 			}
 		}
 	}
