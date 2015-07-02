@@ -1,7 +1,9 @@
 <div class="task-history-container">
 	<h2 id="taskHeader">Task History</h2>
-	<input ng-model="taskEntry" type="text" id="taskInput" ng-keydown="returnTask($event)">
+	<input ng-model="task.name" type="text" id="taskInput" ng-keydown="returnTask($event)">
 	<button id="taskButton" ng-click="addTask()">Add Task</button>
+	<ul id="task-entry-list">
+		<li id="task-entry-list-item" ng-repeat="task in tasks | orderBy: 'createdAt': true">{{ task.name }}</li>
+	</ul>
 </div>
 <tracker></tracker>
-

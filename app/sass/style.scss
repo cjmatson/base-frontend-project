@@ -12,10 +12,11 @@ body {
 	color: #FFD700;
 	text-shadow: 2px 2px red;
 	display: block;
-	margin: auto;
-	margin-top: 45px;
 	font-weight: 400;
 	font-size: 100px;
+	position: fixed;
+	top: 200px;
+	right: 450px;
 }
 
 .start {
@@ -26,12 +27,14 @@ body {
 	font-family: "Impact";
 	text-align: center;
 	border: #000080;
-	margin: auto;
 	display: block;
 	border-style: outset;
 	text-shadow: 2px 2px #FFD700;
 	border-color: #FFD700;
 	cursor: pointer;
+	position: fixed;
+	top: 350px;
+	right: 450px;
 }
 
 .break {
@@ -42,12 +45,14 @@ body {
 	font-family: "Impact";
 	text-align: center;
 	border: #000080;
-	margin: auto;
 	display: block;
 	border-style: outset;
 	text-shadow: 2px 2px #FFD700;
 	border-color: #FFD700;
 	cursor: pointer;
+	position: fixed;
+	top: 350px;
+	right: 450px;
 }
 
 .navbar {
@@ -81,4 +86,11 @@ body {
 	font-family: "Impact";
 	color: #FFD700;
 	text-shadow: 1px 1px red;
+}
+
+#task-entry-list-item {
+	color: #FFD700;
+	text-shadow: 0.5px 0.5px red;
+	font-family: "Impact";
+	list-style-type: none;
 }
