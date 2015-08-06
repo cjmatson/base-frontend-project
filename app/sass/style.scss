@@ -3,14 +3,14 @@ html {
 }
 
 body {
-	background-color: #000080;
+	background-color: #072754;
 }
 
 .track {
 	text-align: center;
 	font-family: "Impact";
-	color: #FFD700;
-	text-shadow: 2px 2px red;
+	color: #CFAB7A;
+	text-shadow: 2px 2px #C6011F;
 	display: block;
 	font-weight: 400;
 	font-size: 100px;
@@ -20,17 +20,17 @@ body {
 }
 
 .start {
-	background: red;
-	color: #000080;
+	background: #C6011F;
+	color: #072754;
 	font-weight: 400;
 	font-size: 50px;
 	font-family: "Impact";
 	text-align: center;
-	border: #000080;
+	border: #072754;
 	display: block;
 	border-style: outset;
-	text-shadow: 2px 2px #FFD700;
-	border-color: #FFD700;
+	text-shadow: 2px 2px #CFAB7A;
+	border-color: #CFAB7A;
 	cursor: pointer;
 	position: fixed;
 	top: 350px;
@@ -38,17 +38,17 @@ body {
 }
 
 .break {
-	background: red;
-	color: #000080;
+	background: #C6011F;
+	color: #072754;
 	font-weight: 500;
 	font-size: 50px;
 	font-family: "Impact";
 	text-align: center;
-	border: #000080;
+	border: #072754;
 	display: block;
 	border-style: outset;
-	text-shadow: 2px 2px #FFD700;
-	border-color: #FFD700;
+	text-shadow: 2px 2px #CFAB7A;
+	border-color: #CFAB7A;
 	cursor: pointer;
 	position: fixed;
 	top: 350px;
@@ -57,40 +57,40 @@ body {
 
 .navbar {
 	text-align: center;
-	background-color: red;
+	background-color: #C6011F;
 	line-height: 60px;
-	color: #000080;
+	color: #072754;
 	font-weight: 400;
 	font-size: 50px;
 	font-family: "Impact";
 	border-style: outset;
-	text-shadow: 2px 2px #FFD700;
-	border-color: #FFD700;
+	text-shadow: 2px 2px #CFAB7A;
+	border-color: #CFAB7A;
 	letter-spacing: 6px;
 	position: relative;
 }
 
 #taskButton {
 	cursor: pointer;
-	background: red;
-	color: #000080;
+	background: #C6011F;
+	color: #072754;
 	font-family: "Impact";
 	text-align: center;
 	border-style: outset;
-	text-shadow: 1px 1px #FFD700;
-	border-color: #FFD700;
+	text-shadow: 1px 1px #CFAB7A;
+	border-color: #CFAB7A;
 	font-weight: 400;
 }
 
 #taskHeader {
 	font-family: "Impact";
-	color: #FFD700;
-	text-shadow: 1px 1px red;
+	color: #CFAB7A;
+	text-shadow: 1px 1px #C6011F;
 }
 
 #task-entry-list-item {
-	color: #FFD700;
-	text-shadow: 0.5px 0.5px red;
+	color: #CFAB7A;
+	text-shadow: 0.5px 0.5px #C6011F;
 	font-family: "Impact";
 	list-style-type: none;
 }
