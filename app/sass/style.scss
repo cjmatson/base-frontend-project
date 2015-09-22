@@ -15,8 +15,8 @@ body {
 	font-weight: 400;
 	font-size: 100px;
 	position: fixed;
-	top: 200px;
-	right: 450px;
+	top: 150px;
+	right: 475px;
 }
 
 .start {
@@ -33,8 +33,8 @@ body {
 	border-color: #CFAB7A;
 	cursor: pointer;
 	position: fixed;
-	top: 350px;
-	right: 450px;
+	top: 300px;
+	right: 475px;
 }
 
 .break {
@@ -51,8 +51,8 @@ body {
 	border-color: #CFAB7A;
 	cursor: pointer;
 	position: fixed;
-	top: 350px;
-	right: 450px;
+	top: 300px;
+	right: 475px;
 }
 
 .navbar {
@@ -80,12 +80,14 @@ body {
 	text-shadow: 1px 1px #CFAB7A;
 	border-color: #CFAB7A;
 	font-weight: 400;
+	margin-left: 10px;
 }
 
 #taskHeader {
 	font-family: "Impact";
 	color: #CFAB7A;
 	text-shadow: 1px 1px #C6011F;
+	margin-left: 10px;
 }
 
 #task-entry-list-item {
@@ -93,4 +95,10 @@ body {
 	text-shadow: 0.5px 0.5px #C6011F;
 	font-family: "Impact";
 	list-style-type: none;
+	font-size: 20px;
+	margin-top: 5px;
+}
+
+#taskInput {
+	margin-left: 10px;
 }
