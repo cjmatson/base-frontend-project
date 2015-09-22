@@ -1,18 +1,19 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// Establishes BlocTime angular application 
 var blocTime = angular.module('BlocTime', ['ui.router', 'firebase']);
+// Configures BlocTime's home view
 blocTime.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
-	$locationProvider.html5Mode(true);
+	$locationProvider.html5Mode({ enabled: true, requireBase: false });
 	$stateProvider.state('home', {
 		url: '/',
 		controller: 'Home.controller',
 		templateUrl: '/templates/home.html'
 	});
 }])
-
-blocTime.controller('Home.controller', ['$scope', '$firebase', function($scope, $firebase) {
+// Instantiates controller for home page and injects data into Firebase
+blocTime.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 	var ref = new Firebase("https://popping-heat-8018.firebaseio.com/");
-	$scope.data = $firebase(ref);
-	$scope.tasks = $scope.data.$asArray();
+	$scope.tasks = $firebaseArray(ref.child('tasks'));
 	$scope.task = {createdAt: Firebase.ServerValue.TIMESTAMP};
 	$scope.addTask = function() {
 		if ($scope.task.name) {
@@ -33,7 +34,7 @@ blocTime.controller('Home.controller', ['$scope', '$firebase', function($scope, 
 		}
 	}
 }])
-
+// Creates an element that operates the BlocTime timer and its buttons
 blocTime.directive('tracker',['$interval', function($interval) {
 	return {
 		restrict: 'E',
@@ -118,7 +119,7 @@ blocTime.directive('tracker',['$interval', function($interval) {
 		}
 	}
 }])
-
+// Formats the BlocTime timer
 blocTime.filter('timecode', function() {
 	return function(seconds) {
 		seconds = Number.parseFloat(seconds);

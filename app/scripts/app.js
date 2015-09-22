@@ -1,17 +1,18 @@
+// Establishes BlocTime angular application 
 var blocTime = angular.module('BlocTime', ['ui.router', 'firebase']);
+// Configures BlocTime's home view
 blocTime.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
-	$locationProvider.html5Mode(true);
+	$locationProvider.html5Mode({ enabled: true, requireBase: false });
 	$stateProvider.state('home', {
 		url: '/',
 		controller: 'Home.controller',
 		templateUrl: '/templates/home.html'
 	});
 }])
-
-blocTime.controller('Home.controller', ['$scope', '$firebase', function($scope, $firebase) {
+// Instantiates controller for home page and injects data into Firebase
+blocTime.controller('Home.controller', ['$scope', '$firebaseArray', function($scope, $firebaseArray) {
 	var ref = new Firebase("https://popping-heat-8018.firebaseio.com/");
-	$scope.data = $firebase(ref);
-	$scope.tasks = $scope.data.$asArray();
+	$scope.tasks = $firebaseArray(ref.child('tasks'));
 	$scope.task = {createdAt: Firebase.ServerValue.TIMESTAMP};
 	$scope.addTask = function() {
 		if ($scope.task.name) {
@@ -32,7 +33,7 @@ blocTime.controller('Home.controller', ['$scope', '$firebase', function($scope, 
 		}
 	}
 }])
-
+// Creates an element that operates the BlocTime timer and its buttons
 blocTime.directive('tracker',['$interval', function($interval) {
 	return {
 		restrict: 'E',
@@ -117,7 +118,7 @@ blocTime.directive('tracker',['$interval', function($interval) {
 		}
 	}
 }])
-
+// Formats the BlocTime timer
 blocTime.filter('timecode', function() {
 	return function(seconds) {
 		seconds = Number.parseFloat(seconds);
